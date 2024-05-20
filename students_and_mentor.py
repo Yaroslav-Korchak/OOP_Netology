@@ -18,7 +18,7 @@ class Student:
         return self.avg_hw_grade() < other.avg_hw_grade()
 
     def __str__(self):
-        avg_grade = sum(sum(grades) / len(grades) for grades in self.grades.values()) / len(self.grades)
+        avg_grade = self.avg_hw_grade()
         courses_in_progress_str = ', '.join(self.courses_in_progress)
         finished_courses_str = ', '.join(self.finished_courses)
         return (f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: "
@@ -61,7 +61,7 @@ class Lecturer(Mentor):
         return self.avg_lecture_grade() < other.avg_lecture_grade()
 
     def __str__(self):
-        avg_grade = sum(sum(grades) / len(grades) for grades in self.grades.values()) / len(self.grades)
+        avg_grade = self.avg_lecture_grade()
         return (f"Имя: {self.name}\nФамилия: {self.surname}" + f"\nСредняя оценка за лекции: {avg_grade}")
 
 
@@ -161,5 +161,6 @@ lectors = [cool_lecturer1, cool_lecturer2]
 # print(cool_lecturer2.__str__())
 print(f'Студенты:\n{best_student1}\n{best_student2}')
 print(f'Лекторы:\n{cool_lecturer1}\n\n{cool_lecturer2}\n')
+print(f'Ревьюеры:\n{cool_reviewer1}\n\n{cool_reviewer2}\n')
 print(f'Средняя оценка лекторов по курсу Git: {avgerage_lectors_grade(lectors, 'Git')}')
 print(f'Средняя оценка студентов по курсу Python: {avg_students_grade(students, 'Python')}')
